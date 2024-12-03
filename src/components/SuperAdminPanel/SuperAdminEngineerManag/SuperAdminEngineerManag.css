@@ -1,0 +1,174 @@
+/* Overall container styling */
+.engineering-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  min-height: 100vh; /* Ensure full height */
+}
+
+/* Header area for Engineer Management and logo */
+.header-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%; /* Ensure full width */
+}
+
+.header-text {
+  font-size: 24px; /* Adjust the size as needed */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: visible; /* Ensure the text isn't clipped */
+  color: #007bff; /* Same blue color as your buttons */
+}
+
+.header-logo {
+  height: 40px; /* Adjust logo size */
+  margin-left: auto;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+/* Top section for buttons and search bar */
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* Ensure wrapping for smaller screens */
+}
+
+.add-engineer {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-engineer:hover {
+  background-color: #0056b3;
+}
+
+/* Search bar styles */
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 300px; /* Limit search bar width */
+  margin-top: 10px; /* Space out from button on smaller screens */
+}
+
+.search-bar input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex-grow: 1;
+}
+
+.search-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.search-icon i {
+  font-size: 16px;
+}
+
+/* Table container for responsiveness */
+.table-container {
+  overflow-x: auto; /* Scrollable table on smaller devices */
+}
+
+.engineering-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.engineering-table th,
+.engineering-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.engineering-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+/* Delete button styles */
+.delete-button {
+  padding: 5px 15px;
+  background-color: #b4515b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+/* Media Queries for responsiveness */
+
+/* Tablet size */
+@media (max-width: 1024px) {
+  .top-section {
+    flex-direction: column; /* Stack button and search bar */
+    align-items: flex-start; /* Align to start on smaller screens */
+  }
+
+  .search-bar {
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  .add-engineer {
+    width: 100%; /* Full-width button on smaller devices */
+  }
+}
+
+/* Mobile size */
+@media (max-width: 768px) {
+  .engineering-table th,
+  .engineering-table td {
+    padding: 8px;
+    font-size: 14px; /* Smaller font size for table on mobile */
+  }
+
+  .delete-button {
+    padding: 5px 10px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .add-engineer {
+    width: 100%; /* Full-width button for mobile */
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .search-bar input {
+    padding: 8px; /* Smaller padding for input on mobile */
+  }
+
+  .delete-button {
+    font-size: 12px; /* Smaller text for delete button */
+    padding: 4px 8px;
+  }
+
+  /* Reduce table padding for mobile */
+  .engineering-table th,
+  .engineering-table td {
+    padding: 6px;
+    font-size: 12px;
+  }
+}

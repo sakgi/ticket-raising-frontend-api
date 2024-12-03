@@ -1,0 +1,32 @@
+.user-dashboard-container-trt {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Main content should adjust when the sidebar is open */
+.content-trt {
+  margin-left: 0;
+  padding: 20px;
+  margin-top: 60px; /* Start below the navbar */
+  transition: margin-left 0.3s ease;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.sidebar-open-trt {
+  margin-left: 250px; /* Shift content to the right when sidebar is open */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .content-trt {
+    margin-left: 0; /* Ensure content takes full width on small screens */
+    margin-top: 60px; /* Adjust for navbar height */
+  }
+
+  .sidebar {
+    width: 100%; /* Sidebar takes full width on mobile */
+    position: fixed;
+    z-index: 999; /* Sidebar stays above content when open */
+  }
+}

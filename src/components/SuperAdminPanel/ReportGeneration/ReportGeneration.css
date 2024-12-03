@@ -1,0 +1,260 @@
+/* Main container */
+.report-container {
+  margin: 20px;
+}
+
+/* Centered heading */
+
+.header-area {
+  display: flex;
+  justify-content: center; 
+  align-items: center;/* Center the logo and title vertically */
+  margin-bottom: 20px; /* Space between header and content */
+}
+
+.header-logo {
+  height: 50px; /* Adjust as per your needs */
+  margin-right: 20px; /* Space between logo and title */
+ 
+  /* Adjust height as needed */
+  /* margin-left: auto; */
+   /* Space between logo and title */
+  vertical-align: middle; 
+}
+
+.header-text {
+  flex-grow: 1;
+  text-align: center;
+  margin-left: 35%;
+  flex-shrink: 0;
+}
+
+h1 {
+  margin: 0;
+  /* margin-left: 15%; */
+  font-size: 28px;
+  display: flex;
+  /* margin-left: 15%; */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/* Filter section container */
+.filter-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  overflow: visible;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+/* Individual filter group */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  flex: 1; /* Make it more flexible on smaller screens */
+}
+
+/* Filter labels */
+.filter-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Date picker container */
+.date-picker-group {
+  /* display: flex;
+  gap: 10px; */
+  position: relative;
+  z-index: 9999;
+}
+
+/* Inputs and selects */
+.filter-group select,
+.date-picker-group input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%; /* Ensure it fits the container on mobile */
+  max-width: 200px; /* Restrict maximum width */
+}
+
+/* Download button */
+.download-btn {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.download-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Graph section */
+.graph-section {
+  text-align: center;
+  position: relative; /* Ensure it's positioned correctly */
+  z-index: 999; /* Lower than the hamburger menu to keep it visible */
+  margin-top: 10%; /* Add spacing above the graph section */
+}
+
+.graph-section canvas {
+  margin: 0 auto;
+}
+
+/* RESPONSIVE DESIGN */
+/* Medium screens (tablets, smaller desktops) */
+@media (max-width: 992px) {
+  .filter-section {
+    flex-direction: column; /* Stack filters vertically on medium screens */
+    align-items: flex-start; /* Align filters to the start */
+  }
+  
+  .filter-group {
+    margin-bottom: 15px; /* Add spacing between filter groups */
+    width: 100%; /* Make filters take full width on medium screens */
+  }
+  
+  .date-picker-group {
+    flex-direction: column; /* Stack date pickers vertically */
+  }
+  
+  .date-picker-group input {
+    max-width: 100%; /* Ensure date pickers fill the available space */
+  }
+  
+  .download-btn {
+    width: 100%; /* Make the button fill the width on medium screens */
+    margin-top: 10px; /* Add space between the filters and the button */
+  }
+}
+
+/* Small screens (mobile) */
+@media (max-width: 768px) {
+  .filter-section {
+    flex-direction: column; /* Stack everything vertically */
+    align-items: flex-start; /* Align filters to the start */
+  }
+  
+  .filter-group {
+    width: 100%; /* Make filter groups full width */
+    margin-right: 0; /* Remove right margin */
+    margin-bottom: 10px; /* Add bottom margin between filters */
+  }
+  
+  .date-picker-group {
+    flex-direction: column; /* Stack date pickers vertically */
+  }
+  
+  .date-picker-group input {
+    max-width: 100%; /* Full width on mobile screens */
+  }
+  
+  .download-btn {
+    width: 100%; /* Full width download button on mobile */
+    margin-left: 0; /* Remove left margin */
+    margin-top: 10px; /* Add space above the button */
+  }
+}
+
+/* Extra small screens (very small mobile devices) */
+@media (max-width: 576px) {
+  h1 {
+    font-size: 24px; /* Adjust heading size on very small screens */
+  }
+  
+  .filter-group select,
+  .date-picker-group input {
+    font-size: 14px; /* Smaller font size for inputs */
+    padding: 8px; /* Adjust padding for better fit */
+  }
+
+  .download-btn {
+    font-size: 14px; /* Adjust button font size */
+    padding: 10px; /* Adjust padding for better fit */
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .header-area {
+    display: flex;
+    flex-direction: column; /* Stack logo and text vertically */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    padding: 10px; /* Adjust padding as needed */
+    margin-bottom: 10px; /* Space between header and content */
+  }
+
+  .header-logo {
+    height: 40px; /* Adjust logo size for tablet */
+    margin-right: 10px;
+  }
+
+  .header-text {
+    margin-left: 25%;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+}
+
+/* Responsive behavior for mobile devices */
+@media (max-width: 768px) {
+  .header-area {
+    display: flex;
+    flex-direction: column; /* Stack logo and text vertically */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    padding: 10px; /* Adjust padding as needed */
+    margin-bottom: 10px; /* Space between header and content */
+  }
+  .header-logo {
+    height: 35px; /* Adjust logo size for mobile */
+    margin-right: 0; /* Remove space for vertical stacking */
+    margin-bottom: 10px; /* Space between logo and text */
+  }
+
+  .header-text {
+    margin-left: 0; /* Reset margin for mobile */
+    text-align: center; /* Center text on smaller screens */
+    font-size: 18px;
+
+  }
+
+  h1 {
+    font-size: 22px;
+    justify-content: center; /* Center the title */
+  }
+}
+
+/* Additional adjustments for very small screens */
+@media (max-width: 480px) {
+  .header-logo {
+    height: 30px; /* Further reduce logo size */
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .header-text {
+    text-align: center;
+    font-size: 16px;
+  }
+}

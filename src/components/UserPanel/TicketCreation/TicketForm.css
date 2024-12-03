@@ -1,0 +1,133 @@
+.new-ticket-container-trt {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif; /* Modern font */
+  font-size: 28px; /* Larger and bolder font for the title */
+  color: #007bff; /* Blue color for title */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.ticket-form-trt {
+  padding: 10px;
+}
+
+.ticket-form-trt div {
+  margin-bottom: 20px;
+
+}
+
+.ticket-form-trt label {
+  font-weight: 550; /* Adjusted from bold to semi-bold */
+  color: #333;
+  margin-bottom: 5px;
+  display: inline-grid;
+}
+
+.ticket-form-trt input[type="text"],
+.ticket-form-trt select,
+.ticket-form-trt textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.ticket-form-trt input[type="text"]:focus,
+.ticket-form-trt select:focus,
+.ticket-form-trt textarea:focus {
+  border-color: #80bdff;
+  outline: none;
+}
+
+.ticket-form-trt textarea {
+  resize: vertical;
+}
+
+.button-group-trt {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  margin-top: 20px;
+}
+
+.ticket-form-trt button {
+  background-color: #007bff; /* Primary blue background */
+  color: white; /* White text */
+  border: none; /* No border */
+  padding: 12px 20px; /* Adjust padding for a better look */
+  border-radius: 6px; /* Rounded corners for button */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Font size */
+  transition: background-color 0.3s; /* Smooth transition for hover */
+  margin-bottom: 10px; /* Space between buttons */
+}
+
+/* Raise Ticket Button */
+.submit-button-trt {
+  background-color: #007bff; /* Green background for Raise Ticket */
+  box-shadow: 0 4px 15px rgba(31, 91, 187, 0.4); /* Add subtle shadow for depth */
+}
+
+.submit-button-trt:hover {
+  background-color: #005ec2; /* Green background for Raise Ticket */
+  box-shadow: 0 4px 15px rgba(31, 91, 187, 0.4); /* Add subtle shadow for depth */
+}
+
+.cancel-button-trt {
+  background-color: #f44336; /* Red for cancel */
+}
+
+.cancel-button-trt:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
+
+
+.error-message-trt {
+  color: #d9534f;
+  margin-top: 5px;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  text-align: center; /* Center the error message */
+}
+
+@media (max-width: 768px) {
+  .new-ticket-container-trt {
+    padding: 30px; /* Adjusted padding for smaller screens */
+  }
+
+  .ticket-form-trt input[type="text"],
+  .ticket-form-trt select,
+  .ticket-form-trt textarea,
+  .ticket-form-trt button {
+    font-size: 14px;
+  }
+
+  .ticket-form-trt div {
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .new-ticket-container-trt {
+    padding: 20px;
+  }
+
+  .ticket-form-trt input[type="text"],
+  .ticket-form-trt select,
+  .ticket-form-trt textarea,
+  .ticket-form-trt button {
+    padding: 10px;
+  }
+}

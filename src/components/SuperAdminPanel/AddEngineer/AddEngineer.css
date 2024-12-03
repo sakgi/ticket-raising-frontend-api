@@ -1,0 +1,165 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.add-engineer-container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.add-engineer-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.heading {
+  font-size: 2em;
+  color: #007bff;
+  animation: slideIn 0.5s ease-in-out;
+}
+
+/* Flexbox for table structure */
+.table {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.table-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.table-header {
+  font-weight: bold;
+  background-color: #f0f0f0;
+}
+
+.table-cell {
+  flex: 1;
+  padding: 10px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+  font-size: 16px;
+}
+
+.input-field:focus {
+  border-color: #0056b3;
+  outline: none;
+}
+
+/* Improved button styling */
+.add-more-container,
+.submit-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.add-more-button,
+.add-engineer-button {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Full width on small screens */
+}
+
+.add-more-button:hover,
+.add-engineer-button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive input and table cells */
+@media (max-width: 1024px) {
+  .input-field {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .table-row {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .table-cell {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .add-more-button,
+  .add-engineer-button {
+    width: 100%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 1.5em;
+  }
+
+  .table-row {
+    margin-bottom: 15px;
+  }
+
+  .add-more-button,
+  .add-engineer-button {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
+/* Fade-in effect for the entire container */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,315 @@
+/* Base Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  background-color: #f4f4f9; /* Light background for contrast */
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+
+.input-wrapper input {
+  flex: 1;
+}
+
+.edit-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: #1e90ff;
+}
+
+.edit-icon:hover {
+  color: #4682b4; /* Darker on hover */
+}
+
+
+.popup-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+.close-popup-btn {
+  background-color: #1e90ff;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.close-popup-btn:hover {
+  background-color: #4682b4; /* Darker shade on hover */
+}
+
+.profile-form-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 40px ; /* More padding for a spacious feel */
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 30px; /* Increased margin */
+}
+
+.profile-name {
+  font-size: 50px; /* Slightly larger for emphasis */
+  font-weight: 700;
+  color: #333;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  padding-right: 10px;
+  gap: 25px; /* Increased gap for better spacing */
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 35px; /* Increased gap */
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+.form-group {
+  flex: 1;
+  min-width: 200px; /* Increased minimum width */
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  font-size: 15px; /* Larger font size for clarity */
+  color: #555; /* Darker label color */
+  margin-bottom: 8px; /* Increased margin */
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 10px ; /* Increased padding for comfort */
+  font-size: 15px; /* Larger font size */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #f8f8f8;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #1e90ff; /* Highlight border on focus */
+  box-shadow: 0 0 8px rgba(30, 144, 255, 0.5); /* Subtle glow effect */
+  background-color: #fff;
+}
+
+.form-group input::placeholder {
+  color: #aaa; /* Softer placeholder color */
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Align buttons properly */
+}
+
+/* Save Changes Button */
+.save-changes-btn {
+  background-color: #1e90ff;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 25px; /* Increased padding for a better click area */
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px 0;
+  box-shadow: 0 5px 15px rgba(30, 144, 255, 0.2); /* Subtle shadow */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.save-changes-btn:hover {
+  background-color: #4682b4; /* Darker shade on hover */
+}
+
+.save-changes-btn:active {
+  transform: scale(0.98);
+}
+
+/* Change Password Button */
+.change-password-btn {
+  background-color: #d72c49;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 25px; /* Increased padding */
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 5px 15px rgba(184, 0, 31, 0.2); /* Subtle shadow */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.change-password-btn:hover {
+  background-color: #750E21; /* Darker shade on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-form-container {
+    padding: 20px; /* Adjusted padding */
+  }
+
+  .profile-name {
+    font-size: 24px; /* Slightly smaller font size */
+  }
+
+  .form-row {
+    flex-direction: column; /* Stack fields on small screens */
+  }
+
+  .form-group {
+    min-width: 100%; /* Full width for smaller screens */
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 10px; /* Adjusted padding */
+  }
+
+  .save-changes-btn,
+  .change-password-btn {
+    padding: 10px 15px; /* Adjusted padding */
+    font-size: 14px; /* Smaller font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-form-container {
+    margin-top: 0px;
+    padding: 10px;
+    padding-right: 35px; /* Further reduced padding */
+  }
+
+  .profile-name {
+    font-size: 20px; /* Smaller font size */
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 10px 8px; /* Consistent padding */
+    font-size: 14px ; /* Smaller font size */
+
+  }
+
+  .save-changes-btn,
+  .change-password-btn {
+    font-size: 14px; /* Consistent font size */
+  }
+}
+
+/* Updated Animation for Popup Dialog */
+.popup-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.5s; /* Fade-in animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Updated Animation for Profile Form Container */
+.profile-form-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-20px); /* Start slightly above */
+  opacity: 0; /* Start invisible */
+  animation: slideIn 0.5s forwards; /* Slide-in animation */
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateY(0); /* End at original position */
+    opacity: 1; /* End visible */
+  }
+}
+
+/* Updated Button Hover Animation */
+.save-changes-btn,
+.change-password-btn {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease; /* Add transform transition */
+}
+
+.save-changes-btn:hover,
+.change-password-btn:hover {
+  background-color: #4682b4; /* Darker shade on hover */
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+.save-changes-btn:active,
+.change-password-btn:active {
+  transform: scale(0.95); /* Scale down on click */
+}
+
+/* Animation for Input Fields */
+.form-group input,
+.form-group select {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease; /* Add transform transition */
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #1e90ff;
+  box-shadow: 0 0 8px rgba(30, 144, 255, 0.5);
+  transform: translateY(-2px); /* Slight lift effect */
+}

@@ -1,0 +1,183 @@
+.new-ticket-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  overflow: auto;
+  animation: fadeIn 0.5s ease-in-out;
+}
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5em;
+  color: #007bff; /* Change color as needed */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+  background: linear-gradient(90deg, #007bff, #ff007b);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.ticket-form {
+  padding: 10px;
+}
+
+.ticket-form div {
+  margin-bottom: 15px;
+}
+
+.ticket-form label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.ticket-form input[type="text"],
+.ticket-form select,
+.ticket-form textarea,
+.ticket-form input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.ticket-form input[type="text"]:focus,
+.ticket-form select:focus,
+.ticket-form textarea:focus,
+.ticket-form input[type="file"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.ticket-form textarea {
+  resize: vertical;
+}
+
+.ticket-form button {
+  padding: 12px 20px;
+  border-radius: 6px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Error message styling */
+.ticket-form p {
+  color: red;
+  font-size: 14px;
+  margin-top: -10px;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 8px 25px;
+  cursor: pointer;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.custom-file-upload:hover {
+  background-color: #0056b3; /* Darken on hover */
+}
+
+.custom-file-upload:focus {
+  outline: none;
+  background-color: #0056b3; /* Ensure focus styles match hover */
+}
+
+.custom-file-upload:active {
+  background-color: #003f7f; /* Darken further on click */
+}
+
+input[type="file"] + span {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+
+
+/* Button group styling */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .new-ticket-container {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .ticket-form button {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5em;
+    color: #007bff; /* Change color as needed */
+}
+}
+
+@media (max-width: 480px) {
+  .new-ticket-container {
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  .ticket-form input[type="text"],
+  .ticket-form select,
+  .ticket-form textarea {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .ticket-form button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}

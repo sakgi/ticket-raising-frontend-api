@@ -1,0 +1,112 @@
+/* Root styles */
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f6f8;
+  padding: 20px;
+}
+
+/* Form container */
+.formContainer {
+  width: 600px; /* Wider container for better spacing */
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* Ensure vertical stacking */
+  gap: 15px; /* Add space between each input field */
+}
+
+/* Form title */
+.title {
+  font-weight: bold;
+  color: #1976d2;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.phoneContainer {
+  display: flex;
+  gap: 10px;
+}
+
+/* Text field adjustments */
+.inputField {
+  margin-top: 10px;
+}
+
+/* Submit button */
+.submitButton {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 0;
+}
+
+/* Links */
+.link {
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+  color: #1976d2;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Success and error messages */
+.successMessage {
+  color: green;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.errorMessage {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .formContainer {
+    width: 90%; /* Make the form occupy most of the screen */
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .submitButton {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .formContainer {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .phoneContainer {
+    flex-direction: column; /* Stack vertically */
+    gap: 15px; /* Add spacing between fields */
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .submitButton {
+    font-size: 12px;
+    padding: 10px 0;
+  }
+}

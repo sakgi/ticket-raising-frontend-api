@@ -1,0 +1,240 @@
+/* Base styles */
+.ticket-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 100%;
+  background-color: #f9f9f9;
+}
+
+.ticket-left, .ticket-right {
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Left section: 75% width */
+.ticket-left {
+  flex: 3;
+  margin-right: 20px;
+}
+
+.ticket-left h2 {
+  margin-bottom: 20px;
+}
+
+.ticket-left p {
+  margin: 10px 0;
+}
+
+.reply-section-fixed {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.reply-box {
+  max-height: 200px; /* Set the maximum height for the reply box */
+  overflow-y: auto; /* Enable vertical scroll when content overflows */
+  border: 1px solid #ccc; /* Optional: Add a border to the reply box */
+  padding: 10px; /* Optional: Add padding inside the box */
+  background-color: #f9f9f9; /* Optional: Set background color */
+}
+
+.reply-toolbar {
+  display: flex;
+  align-items: center;
+  margin-top: 10px; /* Space above the toolbar */
+  gap: 10px; /* Space between icons */
+}
+
+.filename-display {
+  margin-left: 10px; /* Space between the last icon and filename */
+  font-weight: bold; /* Make filename bold for emphasis */
+  color: #333; /* Optional: Change color */
+}
+
+/* TicketDetails.css */
+.ticket-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.ticket-left, .ticket-right {
+  width: 48%;
+}
+
+.reply-section-fixed {
+  margin-top: 20px;
+}
+
+.send-btn {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.ticket-priority, .ticket-action, .responsibility-section {
+  margin-top: 20px;
+}
+
+.engineer-dropdown {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+.engineer-dropdown li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.engineer-dropdown li:hover {
+  background-color: #f0f0f0;
+}
+
+.assign-btn {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* .reply-toolbar {
+  display: flex;
+  align-items: center; /* Align items vertically center */
+   /* Space above the toolbar */
+ 
+
+.reply-toolbar .format-icon {
+  margin-right: 5%; /* Space between format icons */
+  margin-left: 10%;
+}
+
+.file-upload {
+  margin-left: 5px; /* Space between format icons and file upload */
+}
+
+/* Optional: Adjust the file input styling */
+.file-upload input[type="file"] {
+  margin: 0; /* Remove default margins */
+  padding: 5px; /* Add some padding for aesthetics */
+}
+
+
+.send-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  float: right;
+}
+
+/* Right section: 25% width */
+.ticket-right {
+  flex: 1;
+  margin-right: 0;
+  
+}
+
+.ticket-right p {
+  margin: 10px 0;
+}
+
+/* Dropdown styles for Status, Priority, and Action */
+.ticket-status, .ticket-priority, .ticket-action {
+  margin-bottom: 20px;
+}
+
+.ticket-right label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.ticket-right select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  height: 40px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+/* Responsibility Section */
+.responsibility-section p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.assign-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.assign-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Align text fields */
+.ticket-details p, .ticket-right p, .ticket-left p, .ticket-status label, .ticket-priority label, .ticket-action label {
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+
+/* Medium screens (tablets, 768px and above) */
+@media (max-width: 768px) {
+  .ticket-left, .ticket-right {
+    flex: 1; /* Stack the sections */
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+/* Small screens (mobile, 480px and below) */
+@media (max-width: 480px) {
+  .ticket-left, .ticket-right {
+    flex: 1; /* Keep both sections visible */
+    margin-right: 0;
+    margin-bottom: 20px;
+    width: 100%; /* Full width for mobile */
+  }
+
+  .send-btn {
+    width: 100%; /* Make send button full width */
+  }
+
+  .reply-box {
+    height: auto; /* Allow the reply box to grow as needed */
+  }
+
+  .reply-toolbar {
+    flex-direction: column; /* Stack toolbar buttons vertically */
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  .reply-toolbar button, .reply-toolbar label {
+    margin-bottom: 5px; /* Add space between buttons */
+  }
+}

@@ -1,0 +1,182 @@
+/* Sidebar Container */
+.sidebar-trt {
+  position: fixed;
+  top: 60px; /* Start below the navbar */
+  left: -650px; /* Move completely off-screen when closed */
+  width: 250px;
+  height: calc(100% - 60px); /* Full height minus the navbar */
+  background-color: #ffffff; /* White background for a clean look */
+  color: #333;
+  padding: 15px; /* Increased padding for a better layout */
+  display: flex;
+  flex-direction: column; /* Use flexbox to position items */
+  transition: left 0.5s ease; /* Smooth transition when opening/closing */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  z-index: 999; /* Keep it on top of main content */
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  border-right: 1px solid #ddd; /* Light border to separate from content */
+}
+
+/* Open Sidebar */
+.sidebar-trt.open {
+  left: 0; /* Sidebar moves into view when open */
+}
+
+/* Sidebar List */
+.sidebar-trt ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1; /* Let the menu fill the space */
+}
+
+/* Sidebar List Items */
+.sidebar-trt ul li {
+  margin: 20px 0; /* Spacing for better readability */
+}
+
+/* Sidebar Links */
+.sidebar-trt ul li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px; /* Standard font size */
+  padding: 10px 15px; /* Padding around the links */
+  border-radius: 8px; /* Rounded corners for links */
+  transition: background-color 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+/* Sidebar Link Hover */
+.sidebar-trt ul li a:hover {
+  background-color: #f0f0f0; /* Light grey background on hover */
+  color: #FFDC7F; /* Highlight color on hover */
+}
+
+/* Icon Style */
+.sidebar-trt ul li a .icon-trt {
+  margin-right: 15px; /* Space between icon and text */
+}
+
+/* Profile Section */
+.profile-trt {
+  display: flex;
+  align-items: center;
+  margin-top: 10px; /* Move profile section up */
+  padding: 15px 0; /* Reduced padding for profile section */
+  border-top: 1px solid #ddd;
+  font-size: 20px; 
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+/* Hover Effect for Profile Section */
+.profile-trt:hover {
+  background-color: #f0f0f0; /* Light grey background on hover */
+  color: #FFDC7F; /* Change text color on hover */
+}
+
+.profile-trt a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit; /* Use the inherited color from .profile */
+  width: 100%;
+  border-radius: 8px; /* Full width for profile link */
+}
+
+.profile-trt a .icon-trt {
+  margin-right: 15px; /* Space between icon and text */
+}
+
+/* Logout Button Styles */
+.logout-container-trt {
+  margin-top: 0; /* Move logout button closer to profile section */
+  margin-bottom: 10px; /* Adjust margin bottom to move it up a bit */
+  padding: 10px 0; /* Optional: Adjust padding to control spacing */
+}
+
+/* Button Styles */
+.button-trt {
+  background-color: #007bff; /* Primary blue color */
+  border: none;
+  border-radius: 25px; /* Rounded corners */
+  color: #fff;
+  font-weight: bold;
+  padding: 12px 18px; /* Padding for the button */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth effects */
+}
+
+/* Button Hover Effect */
+.button-trt:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.logout-btn-trt:hover {
+  color: #FFDC7F; /* Darker blue on hover */
+  transform: translateY(-2px);
+}
+
+/* Overlay */
+.overlay-trt {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Darker overlay for better visibility */
+  display: none; /* Hidden by default */
+}
+
+.overlay-trt.show {
+  display: block; /* Show overlay when needed */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .sidebar-trt {
+    width: 200px; /* Adjust width for smaller screens */
+    padding: 10px; /* Reduce padding */
+    top: 40px; /* Move sidebar up to reduce gap */
+    height: calc(100% - 40px); /* Adjust height for the new top */
+  }
+
+  .sidebar-trt ul li {
+    margin: 15px 0; /* Reduce margin */
+  }
+
+  .sidebar-trt ul li a {
+    font-size: 14px; /* Smaller font size */
+    padding: 8px 10px; /* Adjust padding */
+  }
+
+  .button-trt {
+    padding: 10px 15px; /* Adjust button padding */
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-trt,
+  .logout-btn-trt {
+    font-size: 20px;
+  }
+
+  .sidebar-trt {
+    top: 45px; /* Move sidebar up further to reduce gap on very small screens */
+    height: calc(100% - 60px); /* Adjust height for the new top */
+  }
+
+  .sidebar-trt ul li {
+    margin: 25px 20px 50px; /* Further reduce margin */
+  }
+
+  .sidebar-trt ul li a {
+    font-size: 20px; /* Even smaller font size */
+    padding: 8px 20px; /* Adjust padding */
+  }
+
+  .button-trt {
+    padding: 8px 12px; /* Adjust button padding */
+  }
+}

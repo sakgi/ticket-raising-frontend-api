@@ -1,0 +1,177 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #eef2f7;
+  overflow: hidden; /* Prevent body scrolling */
+}
+
+.faq-wrapper {
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+  border-radius: 12px;
+  background-color: #fff;
+  height: 100vh; /* Full height of the viewport */
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Hide overflow to prevent scrolling */
+}
+
+.faq-nav {
+  flex: 1;
+  margin-right: 40px;
+  background-color: #2788ef;
+  padding: 20px;
+  border-radius: 8px;
+  color: #fff;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  perspective: 800px; /* Adds 3D perspective to the sidebar */
+}
+
+.faq-nav:hover {
+  transform: rotateY(-5deg); /* 3D effect on hover */
+}
+
+.faq-nav h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.faq-nav p {
+  font-size: 16px;
+  margin: 10px 0;
+  padding: 10px;
+  cursor: pointer;
+  color: #e0e7ff; /* Light text color */
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.faq-nav p:hover {
+  background-color: #6daee6; /* Hover color */
+  color: #fff; /* Text color on hover */
+}
+
+.faq-nav p.active-category {
+  background-color: #fff; /* Background for the active category */
+  color: #2788ef; /* Text color for the active category */
+  font-weight: bold; /* Bold text for the active category */
+}
+
+.faq-details {
+  flex: 3;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  max-height: calc(100vh - 60px); /* Adjust height based on padding and margins */
+  overflow-y: auto; /* Allow vertical scrolling for details */
+}
+
+/* Hide scrollbar for .faq-details */
+.faq-details::-webkit-scrollbar {
+ display: none; /* Hides the scrollbar for webkit browsers */
+}
+
+.faq-details {
+  -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.faq-details h1 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #333;
+  border-bottom: 2px solid #2788ef; /* Bottom border for the title */
+  padding-bottom: 10px; /* Padding under the title */
+}
+
+.faq-item {
+  margin-bottom: 20px;
+  background-color: #f5f5f5; /* Background color for FAQ items */
+  padding: 15px;
+  border-radius: 8px;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d; /* Enables 3D effect */
+  perspective: 800px;
+}
+
+.faq-item:hover {
+  transform: translateZ(10px) rotateX(3deg) rotateY(-3deg); /* 3D hover effect */
+  background-color: #e3f2fd; /* Light blue on hover */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Add depth on hover */
+}
+
+.faq-query {
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between; /* Space between text and icon */
+  align-items: center; /* Center items vertically */
+  color: #2788ef; /* Query text color */
+  transition: transform 0.3s ease; /* Add smooth animation */
+}
+
+.faq-query:hover {
+  transform: scale(1.03); /* Slightly enlarge query text on hover */
+}
+
+.faq-query span {
+  font-size: 24px; /* Font size for toggle icon */
+  transition: transform 0.3s; /* Transition for rotation */
+}
+
+.faq-query span.open {
+  transform: rotate(45deg); /* Rotate icon when open */
+}
+
+.faq-response {
+  margin-top: 15px; /* Margin above response */
+  padding-left: 20px; /* Left padding for the response */
+  font-size: 16px; /* Font size for response */
+  color: #555; /* Text color for response */
+  border-left: 3px solid #2788ef; /* Left border for response */
+}
+
+.error-message {
+  color: red; /* Error message color */
+  font-size: 14px; /* Font size for error message */
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .faq-wrapper {
+    flex-direction: column; /* Stack layout on smaller screens */
+    padding: 10px; /* Reduced padding */
+  }
+
+  .faq-nav {
+    margin-right: 0; /* Remove right margin */
+    margin-bottom: 20px; /* Margin below nav */
+  }
+
+  .faq-nav h3 {
+    font-size: 18px; /* Font size for heading */
+  }
+
+  .faq-nav p {
+    font-size: 14px; /* Font size for categories */
+  }
+
+  .faq-details h1 {
+    font-size: 24px; /* Font size for details heading */
+  }
+
+  .faq-query {
+    font-size: 16px; /* Font size for query */
+  }
+
+  .faq-response {
+    font-size: 14px; /* Font size for response */
+  }
+}
