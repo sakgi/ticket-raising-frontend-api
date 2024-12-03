@@ -69,7 +69,7 @@ function AddEngineer() {
       }
     }
 
-    const token = localStorage.getItem('token'); // Retrieve the token from local storage
+    const token = sessionStorage.getItem('token'); // Retrieve the token from local storage
 
     if (!token) {
       Swal.fire({
