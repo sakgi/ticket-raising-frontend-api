@@ -25,21 +25,7 @@ function Engineering() {
         setLoading(true);
         const q = query(collection(db, "users"), where("role", "==", "Admin"));
         const querySnapshot = await getDocs(q);
-        // const engineerList = querySnapshot.docs.map((doc) => {
-        //   const data = doc.data();
-        //   return {
-        //     id: doc.id,
-        //     fullName: `${data.First_Name || "N/A"} ${data.Last_Name || "N/A"}`, // Concatenate firstName and lastName
-        //     Circle: data.Circleircle || "N/A",
-        //     Email: data.Email || "N/A",
-        //     Employee_ID: data.Employee_ID || "N/A",
-        //     Mobile_Number: data.Mobile_Number || "N/A",
-        //     Organization: data.Organization || "N/A",
-        //     role: data.role || "N/A",
-        //   };
-        // });
-
-        const engineerList = querySnapshot.docs.map((doc) => {
+          const engineerList = querySnapshot.docs.map((doc) => {
           const data = doc.data();
           return {
             id: doc.id,
