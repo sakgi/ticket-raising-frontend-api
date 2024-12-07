@@ -723,7 +723,8 @@ const TicketDetails = () => {
       }
 
       const db = getFirestore();
-      const docRef = doc(db, `users/${user.uid}/TicketDetails/${ticketId}`);
+      const docRef = doc(db, `TicketList/${ticketId}`);
+
 
       try {
         const docSnap = await getDoc(docRef);

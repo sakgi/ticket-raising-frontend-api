@@ -1,4 +1,3 @@
-
 // import React, { useState, useEffect } from 'react';  
 // import { useNavigate } from 'react-router-dom';
 // import { Button } from '@mui/material'; // Import Material-UI Button
@@ -31,10 +30,18 @@
 //           fetchedTickets.push({ id: doc.id, ...doc.data() });
 //         });
 
+//         // Sort by `createdAt` field in descending order
+//         fetchedTickets.sort((a, b) => {
+//           const dateA = a.createdAt ? a.createdAt.toDate().getTime() : 0;
+//           const dateB = b.createdAt ? b.createdAt.toDate().getTime() : 0;
+//           return dateB - dateA; // Descending order
+//         });
+
 //         setTickets(fetchedTickets);
 //         console.log('Fetched Tickets:', fetchedTickets); // Debugging log
 //       }
 //     };
+
 
 //     fetchTickets();
 //   }, [db, user]);
@@ -45,8 +52,9 @@
 
 //   // Filter tickets based on search and filters
 //   const filteredTickets = tickets.filter(ticket => {
+//     const subject = ticket.subject ? ticket.subject.toLowerCase() : ''; // Ensure subject is defined
 //     return (
-//       ticket.subject.toLowerCase().includes(searchQuery.toLowerCase()) &&
+//       subject.includes(searchQuery.toLowerCase()) &&
 //       (statusFilter === '' || ticket.status === statusFilter) &&
 //       (priorityFilter === '' || ticket.priority === priorityFilter)
 //     );
@@ -86,8 +94,9 @@
 //           <div className="filters-trt">
 //             <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
 //               <option value="">All Status</option>
-//               <option value="Open">Open</option>
-//               <option value="Pending">Pending</option>
+//               <option value="Raised">Raised</option>
+//               <option value="In Progress">In Progress</option>
+//               <option value="Resolved">Resolved</option>
 //               <option value="Closed">Closed</option>
 //             </select>
 
@@ -117,9 +126,9 @@
 //               <th>Ticket ID</th>
 //               <th>Subject</th>
 //               <th>Created At</th>
-//               <th>Last Update</th>
 //               <th>Status</th>
 //               <th>Priority</th>
+//               <th>Raised Time</th>
 //             </tr>
 //           </thead>
 //           <tbody>
@@ -132,9 +141,10 @@
 //                   </div>
 //                 </td>
 //                 <td>{ticket.date}</td>
-//                 <td>{ticket.lastUpdate || 'N/A'}</td> {/* Last Update is kept blank */}
+//  {/* Last Update is kept blank */}
 //                 <td>{ticket.status}</td>
 //                 <td>{ticket.priority || 'N/A'}</td> {/* Priority is kept blank */}
+//                 <td>{ticket.time}</td>
 //               </tr>
 //             ))}
 //           </tbody>
@@ -160,18 +170,19 @@
 // export default TicketsTable;
 
 
-import React, { useState, useEffect } from 'react';  
-import { useNavigate } from 'react-router-dom';
-import { Button } from '@mui/material'; // Import Material-UI Button
-import { getFirestore, collection, query, getDocs } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
-import './TicketsTable.css';
+
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material"; // Import Material-UI Button
+import { getFirestore, collection, query, where, getDocs } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import "./TicketsTable.css";
 
 const TicketsTable = () => {
   const [tickets, setTickets] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [statusFilter, setStatusFilter] = useState('');
-  const [priorityFilter, setPriorityFilter] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState("");
+  const [priorityFilter, setPriorityFilter] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const ticketsPerPage = 10;
   const navigate = useNavigate();
@@ -180,30 +191,35 @@ const TicketsTable = () => {
   const user = auth.currentUser;
 
   useEffect(() => {
-    // Fetch the tickets for the currently logged-in user
     const fetchTickets = async () => {
       if (user) {
-        const ticketsCollectionRef = collection(db, `users/${user.uid}/TicketDetails`);
-        const q = query(ticketsCollectionRef); // Query for fetching all ticket details for the user
-        const querySnapshot = await getDocs(q);
+        try {
+          const uid = user.uid; // Get the UID of the logged-in user
+          const ticketsCollectionRef = collection(db, "TicketList");
 
-        const fetchedTickets = [];
-        querySnapshot.forEach((doc) => {
-          fetchedTickets.push({ id: doc.id, ...doc.data() });
-        });
+          // Query the tickets where the `createdBy` field matches the user's UID
+          const q = query(ticketsCollectionRef, where("createdBy", "==", uid));
+          const querySnapshot = await getDocs(q);
 
-        // Sort by `createdAt` field in descending order
-        fetchedTickets.sort((a, b) => {
-          const dateA = a.createdAt ? a.createdAt.toDate().getTime() : 0;
-          const dateB = b.createdAt ? b.createdAt.toDate().getTime() : 0;
-          return dateB - dateA; // Descending order
-        });
+          const fetchedTickets = [];
+          querySnapshot.forEach((doc) => {
+            fetchedTickets.push({ id: doc.id, ...doc.data() });
+          });
 
-        setTickets(fetchedTickets);
-        console.log('Fetched Tickets:', fetchedTickets); // Debugging log
+          // Sort by `createdAt` field in descending order
+          fetchedTickets.sort((a, b) => {
+            const dateA = a.createdAt ? a.createdAt.toDate().getTime() : 0;
+            const dateB = b.createdAt ? b.createdAt.toDate().getTime() : 0;
+            return dateB - dateA; // Descending order
+          });
+
+          setTickets(fetchedTickets);
+          console.log("Fetched Tickets:", fetchedTickets); // Debugging log
+        } catch (error) {
+          console.error("Error fetching tickets:", error);
+        }
       }
     };
-
 
     fetchTickets();
   }, [db, user]);
@@ -213,19 +229,22 @@ const TicketsTable = () => {
   };
 
   // Filter tickets based on search and filters
-  const filteredTickets = tickets.filter(ticket => {
-    const subject = ticket.subject ? ticket.subject.toLowerCase() : ''; // Ensure subject is defined
+  const filteredTickets = tickets.filter((ticket) => {
+    const subject = ticket.subject ? ticket.subject.toLowerCase() : ""; // Ensure subject is defined
     return (
       subject.includes(searchQuery.toLowerCase()) &&
-      (statusFilter === '' || ticket.status === statusFilter) &&
-      (priorityFilter === '' || ticket.priority === priorityFilter)
+      (statusFilter === "" || ticket.status === statusFilter) &&
+      (priorityFilter === "" || ticket.priority === priorityFilter)
     );
   });
 
   // Pagination logic
   const indexOfLastTicket = currentPage * ticketsPerPage;
   const indexOfFirstTicket = indexOfLastTicket - ticketsPerPage;
-  const currentTickets = filteredTickets.slice(indexOfFirstTicket, indexOfLastTicket);
+  const currentTickets = filteredTickets.slice(
+    indexOfFirstTicket,
+    indexOfLastTicket
+  );
   const totalPages = Math.ceil(filteredTickets.length / ticketsPerPage);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -234,12 +253,12 @@ const TicketsTable = () => {
     <div className="tickets-container-trt">
       <div className="header-section-trt">
         <div className="add-ticket-button-trt">
-          <Button 
-            variant="contained" 
-            color="primary" 
-            onClick={() => navigate('/user-dashboard/ticket-form')} // Navigate to ticket form
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => navigate("/user-dashboard/ticket-form")} // Navigate to ticket form
           >
-          + Raise New Ticket
+            + Raise New Ticket
           </Button>
         </div>
 
@@ -254,7 +273,10 @@ const TicketsTable = () => {
           </div>
 
           <div className="filters-trt">
-            <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+            >
               <option value="">All Status</option>
               <option value="Raised">Raised</option>
               <option value="In Progress">In Progress</option>
@@ -262,7 +284,10 @@ const TicketsTable = () => {
               <option value="Closed">Closed</option>
             </select>
 
-            <select value={priorityFilter} onChange={(e) => setPriorityFilter(e.target.value)}>
+            <select
+              value={priorityFilter}
+              onChange={(e) => setPriorityFilter(e.target.value)}
+            >
               <option value="">All Priorities</option>
               <option value="High">High</option>
               <option value="Medium">Medium</option>
@@ -274,7 +299,7 @@ const TicketsTable = () => {
 
       {/* Display total tickets */}
       <div className="total-tickets-trt">
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <span className="ticket-icon-trt">🎟️</span>
           <h3>Total Tickets:</h3>
         </div>
@@ -294,19 +319,24 @@ const TicketsTable = () => {
             </tr>
           </thead>
           <tbody>
-            {currentTickets.map(ticket => (
+            {currentTickets.map((ticket) => (
               <tr key={ticket.id} onClick={() => handleRowClick(ticket.id)}>
                 <td>{ticket.id}</td>
                 <td>
-                  <div className="subject-cell">
-                    {ticket.subject}
-                  </div>
+                  <div className="subject-cell">{ticket.subject}</div>
                 </td>
-                <td>{ticket.date}</td>
- {/* Last Update is kept blank */}
+                <td>
+                  {ticket.createdAt
+                    ? ticket.createdAt.toDate().toLocaleDateString()
+                    : "N/A"}
+                </td>
                 <td>{ticket.status}</td>
-                <td>{ticket.priority || 'N/A'}</td> {/* Priority is kept blank */}
-                <td>{ticket.time}</td>
+                <td>{ticket.priority || "N/A"}</td>
+                <td>
+                  {ticket.createdAt
+                    ? ticket.createdAt.toDate().toLocaleTimeString()
+                    : "N/A"}
+                </td>
               </tr>
             ))}
           </tbody>
@@ -319,7 +349,7 @@ const TicketsTable = () => {
           <button
             key={index + 1}
             onClick={() => paginate(index + 1)}
-            className={currentPage === index + 1 ? 'active' : ''}
+            className={currentPage === index + 1 ? "active" : ""}
           >
             {index + 1}
           </button>
